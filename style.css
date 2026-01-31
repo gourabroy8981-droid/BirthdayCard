@@ -1,0 +1,220 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s;
+  overflow: hidden;
+}
+
+body.dark {
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+}
+
+.toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.container {
+  perspective: 1200px;
+}
+
+.card {
+  width: 340px;
+  height: 480px;
+  max-width: 90vw;
+  max-height: 90vh;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 1s ease;
+  border-radius: 24px;
+}
+
+/* Front & Back Side */
+.front, .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 24px;
+  backface-visibility: hidden;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.45);
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: background 0.4s, color 0.4s;
+}
+
+/* Front Side */
+.front {
+  background: linear-gradient(135deg,#ffffff,#ffe1f0,#ffd6a5);
+}
+
+/* Back Side */
+.back {
+  transform: rotateY(180deg);
+  background: linear-gradient(135deg, #ffdde1, #ee9ca7, #fcb1c1);
+  color: #2c1a2f;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* text stays at top */
+  align-items: center;
+  padding: 30px 20px;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.back h1 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: #ff2e63;
+}
+
+/* Typing Text Container */
+#typeText {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  text-align: center;
+  color: #4b1f5e;
+  margin-bottom: 20px;
+  max-height: 260px; /* prevent overlapping button */
+  overflow-y: auto; /* scroll if too long */
+  width: 100%;
+  padding-right: 5px;
+}
+
+/* Share Button */
+.back button {
+  margin-top: auto; /* stays at bottom */
+  padding: 12px 30px;
+  border: none;
+  background: linear-gradient(135deg,#6a11cb,#2575fc);
+  color: white;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1rem;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.back button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+/* Photo Frame */
+.photo-frame img {
+  width: 190px;
+  height: 190px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 15px auto;
+  border: 5px solid #ff5fa2;
+  box-shadow: 0 0 30px rgba(255,90,160,0.9);
+}
+
+/* Gallery */
+.gallery {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.gallery img {
+  width: 65px;
+  height: 65px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 2px solid #ff5fa2;
+}
+
+.glow {
+  animation: glowPulse 2s infinite alternate;
+}
+
+@keyframes glowPulse {
+  from { text-shadow: 0 0 10px #ff4b6e; }
+  to { text-shadow: 0 0 30px #ff9ccf; }
+}
+
+/* Canvas for fireworks */
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+/* Hearts */
+.heart {
+  position: fixed;
+  font-size: 22px;
+  animation: explode 1s forwards;
+}
+
+@keyframes explode {
+  from { transform: translate(0,0) scale(1); opacity:1; }
+  to { transform: translate(var(--x), var(--y)) scale(0); opacity:0; }
+}
+
+/* Confetti */
+.confetti {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  to { transform: translateY(120vh) rotate(360deg); }
+}
+
+/* Mobile Responsiveness */
+@media(max-width:600px){
+  .card{
+    width:300px;
+    height:440px;
+  }
+
+  .photo-frame img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .gallery img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .back h1 {
+    font-size: 1.5rem;
+  }
+
+  #typeText {
+    font-size: 1rem;
+    max-height: 200px;
+    margin-bottom: 15px;
+  }
+
+  .back button {
+    padding: 10px 20px;
+    font-size: 0.95rem;
+  }
+}

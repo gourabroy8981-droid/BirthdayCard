@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday MAA ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Dark Mode Toggle -->
+<button class="toggle" onclick="toggleMode()">🌙</button>
+
+<div class="container">
+  <div class="card" id="card">
+    <!-- Front Side -->
+    <div class="front">
+      <h1>Happy Birthday 🎂</h1>
+      <h2 class="glow">MAA ❤️</h2>
+
+      <!-- Main Photo -->
+      <div class="photo-frame">
+        <img id="mainPhoto" src="main.jpg" alt="Mom Photo">
+      </div>
+
+      <!-- Small Gallery -->
+      <div class="gallery">
+        <img src="maa1.jpg" alt="Gallery Photo 1">
+        <img src="maa2.jpg" alt="Gallery Photo 2">
+        <img src="maa3.jpg" alt="Gallery Photo 3">
+      </div>
+      <br>
+      <p>Click the card to open 💝</p>
+    </div>
+
+    <!-- Back Side -->
+    <div class="back">
+      <h1>Dear MAA 💐</h1>
+
+      <!-- Typing message -->
+      <p id="typeText"></p>
+
+      <!-- Share button -->
+      <button onclick="shareWhatsApp()">Share 💚</button>
+    </div>
+  </div>
+</div>
+
+<!-- Fireworks Canvas -->
+<canvas id="fireworks"></canvas>
+
+<!-- Music -->
+<audio id="song" src="music1.mp3" loop></audio>
+
+<!-- JS -->
+<script src="script.js"></script>
+</body>
+</html>
